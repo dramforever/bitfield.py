@@ -1,7 +1,7 @@
 [
     { "len": 1, "name": "N" },
-    { "len": 2, "name": "PBMT" },
-    { "len": 9 },
+    { "len": 2, "name": "PBMT", "decode": { "0": "PMA", "1": "NC", "2": "IO" } },
+    { "len": 7 },
     { "len": 44, "name": "PPN" },
     { "len": 2, "name": "RSW" },
     { "len": 1, "name": "D" },
