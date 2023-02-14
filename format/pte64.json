@@ -1,0 +1,15 @@
+[
+    { "len": 1, "name": "N" },
+    { "len": 2, "name": "PBMT" },
+    { "len": 9 },
+    { "len": 44, "name": "PPN" },
+    { "len": 2, "name": "RSW" },
+    { "len": 1, "name": "D" },
+    { "len": 1, "name": "A" },
+    { "len": 1, "name": "G" },
+    { "len": 1, "name": "U" },
+    { "len": 1, "name": "X" },
+    { "len": 1, "name": "W" },
+    { "len": 1, "name": "R" },
+    { "len": 1, "name": "V" }
+]

@@ -1,0 +1,5 @@
+[
+    { "len": 4, "name": "Mode", "decode": { "0": "Bare", "8": "Sv39", "9": "Sv48", "10": "Sv57" } },
+    { "len": 16, "name": "ASID" },
+    { "len": 44, "name": "PPN" }
+]
