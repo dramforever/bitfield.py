@@ -23,14 +23,18 @@ def draw_point(field):
 
 def describe_field(field, offset, value):
     desc_range = f"[{offset + field['len'] - 1}:{offset}]" if field['len'] > 1 else f'[{offset}]'
-    if 'decode' in field:
-        value = field['decode'].get(str(value), f'<0x{value:x}>')
-    elif field['len'] == 1:
-        value = str(value)
-    else:
-        value = hex(value)
 
-    return f"{desc_range:7} {field['name']} = {value}"
+    if field['len'] == 1:
+        value_str = str(value)
+    else:
+        value_str = hex(value)
+
+    if 'decode' in field:
+        value_desc = f" ({field['decode'].get(str(value), '?')})"
+    else:
+        value_desc = ''
+
+    return f"{desc_range:7} {field['name']} = {value_str}{value_desc}"
 
 def draw_value(fields, value):
     total_len = sum(f['len'] for f in fields)
