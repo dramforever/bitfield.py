@@ -1,0 +1,17 @@
+[
+    { "len": 30 },
+    { "len": 2, "name": "VSXL", "decode": { "1": "rv32", "2": "rv64", "3": "rv128" } },
+    { "len": 9 },
+    { "len": 1, "name": "VTSR" },
+    { "len": 1, "name": "VTW" },
+    { "len": 1, "name": "VTVM" },
+    { "len": 2 },
+    { "len": 6, "name": "VGEIN" },
+    { "len": 2 },
+    { "len": 1, "name": "HU" },
+    { "len": 1, "name": "SPVP" },
+    { "len": 1, "name": "SPV" },
+    { "len": 1, "name": "GVA" },
+    { "len": 1, "name": "VSBE" },
+    { "len": 5 }
+]
