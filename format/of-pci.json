@@ -1,0 +1,11 @@
+[
+    { "len": 1, "name": "r", "decode": { "0": "Relocatable", "1": "Non-relocatable" } },
+    { "len": 1, "name": "p", "decode": { "0": "Non-prefetchable", "1": "Prefetchable" } },
+    { "len": 1, "name": "t" },
+    { "len": 3 },
+    { "len": 2, "name": "Space", "decode": { "0": "Config", "1": "IO", "2": "32-bit Memory", "3": "64-bit Memory" } },
+    { "len": 8, "name": "Bus" },
+    { "len": 5, "name": "Dev" },
+    { "len": 3, "name": "Fun" },
+    { "len": 8, "name": "Reg" }
+]
