@@ -3,7 +3,9 @@
 import sys
 import json
 
-charset = { 'vertical': '|', 'joint': '\'', 'horizontal': '-', 'start': '<', 'mid': '=', 'end': '>', 'single': 'x', 'gap': '-' }
+CHARSET_ASCII = { 'vertical': '|', 'joint': '\'', 'horizontal': '-', 'start': '<', 'mid': '=', 'end': '>', 'single': 'x', 'gap': '-' }
+CHARSET_UNICODE = { 'vertical': '│', 'joint': '╰', 'horizontal': '─', 'start': '└', 'mid': '─', 'end': '┤', 'single': '│', 'gap': ' ' }
+charset = CHARSET_UNICODE
 
 def draw_field(field):
     if 'name' not in field:
@@ -67,11 +69,32 @@ def draw_value(fields, value):
 
     return lines
 
-if len(sys.argv) != 3:
-    print(f'Usage: {sys.argv[0]} <format.json> <value>')
-else:
-    _, format, value = sys.argv
+def usage():
+    print(f'Usage: {sys.argv[0]} [ -unicode | -ascii ] <format.json> <value>', file=sys.stderr)
+
+def main():
+    global charset
+
+    if len(sys.argv) == 3:
+        _, format, value = sys.argv
+        flag = '-unicode'
+    elif len(sys.argv) == 4:
+        _, flag, format, value = sys.argv
+    else:
+        return usage()
+
+    if flag == '-unicode':
+        charset = CHARSET_UNICODE
+    elif flag == '-ascii':
+        charset = CHARSET_ASCII
+    else:
+        return usage()
+
     with open(format, 'rb') as f:
         fields = json.load(f)
+
     value = int(value, 0)
     print('\n'.join(draw_value(fields, value)))
+
+if __name__ == '__main__':
+    main()
