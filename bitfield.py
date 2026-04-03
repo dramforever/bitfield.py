@@ -3,23 +3,25 @@
 import sys
 import json
 
+charset = { 'vertical': '|', 'joint': '\'', 'horizontal': '-', 'start': '<', 'mid': '=', 'end': '>', 'single': 'x', 'gap': '-' }
+
 def draw_field(field):
     if 'name' not in field:
-        return '-' * field['len']
+        return charset['gap'] * field['len']
     elif field['len'] == 1:
-        return 'x'
+        return charset['single']
     else:
         mid = field['len'] - 2
-        return f"<{'=' * mid}>"
+        return f"{charset['start']}{charset['mid'] * mid}{charset['end']}"
 
 def draw_through(field):
     if 'name' not in field:
         return ' ' * field['len']
     else:
-        return (' ' * (field['len'] - 1)) + '|'
+        return (' ' * (field['len'] - 1)) + charset['vertical']
 
 def draw_point(field):
-    return (' ' * (field['len'] - 1)) + '\''
+    return (' ' * (field['len'] - 1)) + charset['joint']
 
 def describe_field(field, offset, value):
     desc_range = f"[{offset + field['len'] - 1}:{offset}]" if field['len'] > 1 else f'[{offset}]'
@@ -58,7 +60,7 @@ def draw_value(fields, value):
         if 'name' in f:
             through = ''.join(draw_through(f) for f in fields[:i])
             point = draw_point(f)
-            append = '-' * (offset + 1)
+            append = charset['horizontal'] * (offset + 1)
             lines.append(f'  {through}{point}{append} {describe_field(f, offset, field_value)}')
 
         offset += f['len']
